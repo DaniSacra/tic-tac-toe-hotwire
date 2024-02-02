@@ -1,0 +1,17 @@
+<% 3.times do |row| %>
+  <div class="row">
+    <% 3.times do |col| %>
+      <div class="col">
+        <% if game.get_symbol(row, col) %>
+          <%= game.get_symbol(row, col) %>
+        <% else %>
+          <%= form_with url: game_path(game), method: :patch, local: true do |form| %>
+            <%= form.hidden_field :row, value: row %>
+            <%= form.hidden_field :col, value: col %>
+            <%= form.submit game.current_symbol  %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="container">
+
+  <%= turbo_stream_from @game %>
+
+  <h1><%= "Game #{@game.id}" %></h1>
+
+  <div id="<%= dom_id(@game) %>">
+    <%= render @game %>
+  </div>
+
+  <%= button_to "New Game", games_path(), method: :post, class: "btn" %>
+</div>
